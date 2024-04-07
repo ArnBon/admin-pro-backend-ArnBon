@@ -97,10 +97,29 @@ const googleSignIn = async( req, res = response ) => {
                ok: false,
                msg: 'Token de google no es correcto'
            });
-    }   
+    }
+    
+
 }
+
+/*regresar un nuevo token clase 156*/
+const renewToken  = async (req, res = response) => {
+    const uid = req.uid;
+
+    // Generar token JWT
+        const token = await generarJWT( uid );
+
+        res.json({
+            ok: true,
+            uid,
+            token
+        });
+}
+
 
 module.exports = {
     login,
-    googleSignIn
+    googleSignIn,
+    renewToken
+
 }
