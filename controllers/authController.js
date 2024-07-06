@@ -6,7 +6,7 @@ const { googleVerify} = require('../helpers/google-verify');
 
 
 const login = async (req, res = response) => {
-    debugger
+    //debugger
     const {email, password} = req.body; //aqui deberia tener algun string de cada campo
 
     try {
@@ -57,7 +57,7 @@ const login = async (req, res = response) => {
 
 const googleSignIn = async( req, res = response ) => {
    
-    debugger
+    //debugger
     try {
         // const googleUser = await googleVerify(req.body.token);
         const {email, name, picture} = await googleVerify(req.body.token);
@@ -104,7 +104,7 @@ const googleSignIn = async( req, res = response ) => {
 }
 
 /*regresar un nuevo token clase 156*/
-debugger
+//debugger
 const renewToken  = async (req, res = response) => {
     const uid = req.uid;
 
@@ -114,7 +114,9 @@ const renewToken  = async (req, res = response) => {
         res.json({
             ok: true,           
             token,
-            usuario            
+            Usuario: Usuario //aqui estaba el error que no me dejaba 
+            //loguearme de manera normalita resuelto el 7-6-2024 10:05am
+            // lo tenia asi: usuario y lo cambie asi: Usuario: Usuario            
         });
 }
 
