@@ -9,12 +9,12 @@ const MedicoSchema = Schema({
     img: {
         type: String,
     },
-    usuario: {//hace referencia al usuario
+    usuario: {//hace referencia al usuario esto es como un idUsuario
         type: Schema.Types.ObjectId,
         ref: 'Usuario',
         required: true        
     },
-    hospital: {//hace referencia al hospital
+    hospital: {//hace referencia al hospital esto es como un idHospital
         type: Schema.Types.ObjectId,
         ref: 'Hospital',
         required: true        

@@ -35,8 +35,6 @@ const getUsuarios = async (req, res) => {
          
     });
 }
-
-
 // fin hace la consulta
 
 // se hace el registro de datos
@@ -44,7 +42,7 @@ const crearUsuario = async (req, res = response) => {
 
     const {email, password} = req.body;
     
-    // const errores = validationResult(req);
+    // const errores = validationResult(req); clase 113
 
     // if (!errores.isEmpty) {
     //     return res.status(400).json({
@@ -101,12 +99,12 @@ const actualizarUsuario = async (req, res = response) => {
 
     // TODO: Validar token y comprobar si es el usuario correcto
 
-    const uid = req.params.id;
+    const uid = req.params.id; //con esto recibo el id
 
 
     try {
 
-        const usuarioDB = await Usuario.findById( uid );
+        const usuarioDB = await Usuario.findById( uid ); // esta es la consulta para obtener el id del registro a modificar
 
         if ( !usuarioDB ) {
             return res.status(404).json({
@@ -130,7 +128,7 @@ const actualizarUsuario = async (req, res = response) => {
         }
         
         campos.email = email;
-        const usuarioActualizado = await Usuario.findByIdAndUpdate( uid, campos, { new: true } );
+        const usuarioActualizado = await Usuario.findByIdAndUpdate( uid, campos, { new: true } ); //con esto actualiza al usuario a traves de su id
 
         res.json({
             ok: true,
@@ -151,11 +149,11 @@ const actualizarUsuario = async (req, res = response) => {
 // se borran los datos 
 const borrarUsuario = async(req, res = response ) => {
 
-    const uid = req.params.id;
+    const uid = req.params.id; //aqui le pasas el id
 
     try {
 
-        const usuarioDB = await Usuario.findById( uid );
+        const usuarioDB = await Usuario.findById( uid ); //con esto encuentra el id
 
         if ( !usuarioDB ) {
             return res.status(404).json({

@@ -25,8 +25,7 @@ const fileUpload = (req, res = response) => {
                     ok:false,
                     msg: 'No existe archivo jajaja'
                 });    
-            }
-            // hasta aqui la clase 136
+            } // hasta aqui la clase 136
 
             //comienza la clase 137
             //procesar la imagen

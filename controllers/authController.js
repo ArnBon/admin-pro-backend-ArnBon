@@ -6,8 +6,8 @@ const { googleVerify} = require('../helpers/google-verify');
 
 
 const login = async (req, res = response) => {
-
-    const {email, password} = req.body;
+    debugger
+    const {email, password} = req.body; //aqui deberia tener algun string de cada campo
 
     try {
 
@@ -39,6 +39,7 @@ const login = async (req, res = response) => {
             ok:true,
             // msg: "todo esta bien"
             token
+            
         })
         
     } catch (error) {
@@ -56,7 +57,7 @@ const login = async (req, res = response) => {
 
 const googleSignIn = async( req, res = response ) => {
    
-
+    debugger
     try {
         // const googleUser = await googleVerify(req.body.token);
         const {email, name, picture} = await googleVerify(req.body.token);
@@ -78,6 +79,7 @@ const googleSignIn = async( req, res = response ) => {
             usuario.google = true;
 
         }
+        //Guardar usuario
         await usuario.save();
 
          // Generar token JWT
@@ -87,15 +89,14 @@ const googleSignIn = async( req, res = response ) => {
         res.json({
             ok: true,
             // googleUser
-            email, name, picture,
-            token
+            email, name, picture, token
         });
         
     } catch (error) {
         console.log(error);
         res.status(400).json({
                ok: false,
-               msg: 'Token de google no es correcto'
+               msg: 'Token no es correcto'
            });
     }
     
@@ -103,6 +104,7 @@ const googleSignIn = async( req, res = response ) => {
 }
 
 /*regresar un nuevo token clase 156*/
+debugger
 const renewToken  = async (req, res = response) => {
     const uid = req.uid;
 
@@ -110,9 +112,9 @@ const renewToken  = async (req, res = response) => {
         const token = await generarJWT( uid );
 
         res.json({
-            ok: true,
-            uid,
-            token
+            ok: true,           
+            token,
+            usuario            
         });
 }
 

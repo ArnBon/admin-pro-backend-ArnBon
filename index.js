@@ -1,13 +1,15 @@
-const express = require('express');
 require('dotenv').config();
-var cors = require('cors');
 
-const { dbConnection } = require('./database/config');
+const express = require('express');
+const { dbConnection } = require('./database/config'); // esto viene de la clase 100 
+const cors = require('cors');
+
 
 //crear el servidor de express
-const app = express();
+//  const app = express();
+const app = new express();
 
-//cors
+//cors es un middleware que se ejecuta desde aqui haciea abajo
 app.use( cors() );
 
 // Carpeta pública
@@ -27,11 +29,7 @@ app.use('/api/medicos', require('./routes/medicosRoute'));
 app.use('/api/todo', require('./routes/busquedasRoute'));
 app.use('/api/upload', require('./routes/uploadsRoute'));
 
-
-
-
-
-
 app.listen(3000, () => {
-    console.log('Servidor corriendo en puerto ' + 3000)
+    // console.log('Servidor corriendo en puerto ' + 3000)
+    console.log('Servidor corriendo en puerto ' + process.env.PORT)
 });

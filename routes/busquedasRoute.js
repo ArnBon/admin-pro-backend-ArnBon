@@ -8,6 +8,6 @@ const {getTodo, getDocumentosColeccion} = require('../controllers/busquedasContr
 const router = Router();
 
 router.get('/:busqueda', validarJWT, getTodo);
-router.get('/coleccion/:tabla/:usqueda', validarJWT, getDocumentosColeccion);
+router.get('/coleccion/:tabla/:busqueda', validarJWT, getDocumentosColeccion);
 
 module.exports = router;
