@@ -104,17 +104,21 @@ const googleSignIn = async( req, res = response ) => {
 }
 
 /*regresar un nuevo token clase 156*/
-debugger
+//debugger
 const renewToken  = async (req, res = response) => {
     const uid = req.uid;
 
     // Generar token JWT
         const token = await generarJWT( uid );
 
+        //obtener usuario por id
+        const usuario = await Usuario.findById(uid);
+
         res.json({
             ok: true,           
             token,
-            usuario            
+            usuario //PONERLO ASI ME DA ERROR Y NO ME PUEDO AUTENTICARS SI ANTES NO SE OBTIENE EL ID POR ESO ME DA EL ERROR ME HACIA FALTA LA CONSTANTE usuario
+                      
         });
 }
 
