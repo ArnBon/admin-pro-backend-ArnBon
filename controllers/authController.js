@@ -6,7 +6,7 @@ const { googleVerify} = require('../helpers/google-verify');
 
 
 const login = async (req, res = response) => {
-    debugger
+    //debugger
     const {email, password} = req.body; //aqui deberia tener algun string de cada campo
 
     try {
@@ -57,7 +57,7 @@ const login = async (req, res = response) => {
 
 const googleSignIn = async( req, res = response ) => {
    
-    debugger
+    //debugger
     try {
         // const googleUser = await googleVerify(req.body.token);
         const {email, name, picture} = await googleVerify(req.body.token);
@@ -109,15 +109,17 @@ const renewToken  = async (req, res = response) => {
     const uid = req.uid;
 
     // Generar token JWT
-        const token = await generarJWT( uid );
+        //const token = await generarJWT( uid );
 
         //obtener usuario por id
-        const usuario = await Usuario.findById(uid);
+        //const usuario = await Usuario.findById(uid);
 
         res.json({
             ok: true,           
             token,
-            usuario //PONERLO ASI ME DA ERROR Y NO ME PUEDO AUTENTICARS SI ANTES NO SE OBTIENE EL ID POR ESO ME DA EL ERROR ME HACIA FALTA LA CONSTANTE usuario
+            Usuario: Usuario //aqui estaba el error que no me dejaba 
+            //loguearme de manera normalita resuelto el 7-6-2024 10:05am
+            // lo tenia asi: usuario y lo cambie asi: Usuario: Usuario
                       
         });
 }
