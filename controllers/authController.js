@@ -109,18 +109,14 @@ const renewToken  = async (req, res = response) => {
     const uid = req.uid;
 
     // Generar token JWT
-        //const token = await generarJWT( uid );
-
-        //obtener usuario por id
-        //const usuario = await Usuario.findById(uid);
+        const token = await generarJWT( uid );
 
         res.json({
             ok: true,           
             token,
             Usuario: Usuario //aqui estaba el error que no me dejaba 
             //loguearme de manera normalita resuelto el 7-6-2024 10:05am
-            // lo tenia asi: usuario y lo cambie asi: Usuario: Usuario
-                      
+            // lo tenia asi: usuario y lo cambie asi: Usuario: Usuario            
         });
 }
 
