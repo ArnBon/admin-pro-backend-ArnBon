@@ -79,6 +79,7 @@ const googleSignIn = async( req, res = response ) => {
             usuario.google = true;
 
         }
+        
         //Guardar usuario
         await usuario.save();
 
