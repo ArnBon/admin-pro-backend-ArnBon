@@ -126,8 +126,19 @@ const actualizarUsuario = async (req, res = response) => {
                 });
             }
         }
-        
-        campos.email = email;
+         
+        //clase 195 esto es para usuarios de google
+        if ( !usuarioDB.google ){
+            campos.email = email;
+        } else if ( usuarioDB.email !== email ) {
+            return res.status(400).json({
+                ok: false,
+                msg: 'Con usuario de google no puede cambiar correo'
+            });
+        }
+        //fin 
+
+
         const usuarioActualizado = await Usuario.findByIdAndUpdate( uid, campos, { new: true } ); //con esto actualiza al usuario a traves de su id
 
         res.json({
